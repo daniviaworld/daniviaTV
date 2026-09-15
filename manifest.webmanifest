@@ -1,0 +1,9 @@
+{
+  "name": "DANIVIA TV",
+  "short_name": "DANIVIA TV",
+  "description": "Agenda deportiva y planes de DANIVIA TV.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#071322",
+  "theme_color": "#081426"
+}
