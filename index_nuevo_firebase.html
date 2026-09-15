@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <title>DANIVIA TV</title>
+  <style>
+    :root{--bg:#050b14;--panel:#0b1726;--panel2:#102238;--line:#203b57;--text:#eaf5ff;--muted:#8da7bf;--blue:#168cff;--cyan:#00e5ff;--green:#00e0a4;--danger:#ff5570}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0,#10335a 0,transparent 35%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1150px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(5,11,20,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:24px;font-weight:900;letter-spacing:2px}.brand span{color:var(--cyan)}
+    nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--muted);font-size:14px}nav a:hover{color:var(--cyan)}
+    .hero{padding:85px 0 65px;min-height:520px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+    .eyebrow{color:var(--cyan);font-size:13px;letter-spacing:3px;font-weight:700}.hero h1{font-size:clamp(42px,7vw,82px);line-height:.95;margin:15px 0}.hero h1 span{color:var(--cyan)}.hero p{color:var(--muted);font-size:18px;line-height:1.6;max-width:620px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:13px 18px;border-radius:6px;cursor:pointer;font-weight:700}.btn.primary{background:var(--blue);border-color:var(--blue)}.btn:hover{filter:brightness(1.15)}
+    .hero-card{background:linear-gradient(145deg,#102d49,#081321);border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 20px 80px #0008}.live{color:var(--green);font-weight:800}.live:before{content:"●";margin-right:8px}.hero-card h2{font-size:34px;margin:15px 0}.hero-card p{font-size:15px}
+    section{padding:55px 0;border-top:1px solid #102238}.section-title{font-size:34px;margin:0 0 10px}.section-desc{color:var(--muted);margin:0 0 28px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:linear-gradient(145deg,var(--panel),#07111d);border:1px solid var(--line);border-radius:10px;padding:22px}.card h3{margin:0 0 10px}.card p{color:var(--muted);line-height:1.5}.tag{display:inline-block;color:var(--cyan);font-size:12px;border:1px solid #1a5974;padding:5px 8px;border-radius:20px;margin-bottom:12px}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.toolbar input,.toolbar select,.modal input{background:#06101c;color:var(--text);border:1px solid var(--line);padding:12px;border-radius:6px;min-width:180px}
+    footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line);font-size:14px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .status{position:fixed;right:18px;bottom:18px;background:#102238;border:1px solid var(--line);padding:12px 15px;border-radius:8px;color:var(--muted);max-width:360px;z-index:20}.status.ok{border-color:#087e63;color:#9affdf}.status.error{border-color:#8c2840;color:#ffb4c1}
+    .modal{display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(520px,100%);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:25px}.modal-box h2{margin-top:0}.modal form{display:grid;gap:12px}.modal input{width:100%}.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .admin-only{display:none}.admin-only.visible{display:block}.empty{color:var(--muted);padding:20px 0}
+    @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:55px}.hero-card{order:-1}.nav{align-items:flex-start;flex-direction:column;padding:15px 0}nav{gap:12px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#inicio">DANIVIA<span>TV</span></a>
+  <nav><a href="#inicio">Inicio</a><a href="#deportes">Deportes</a><a href="#programas">Programas</a><a href="#noticias">Noticias</a><a href="#admin">Admin</a></nav>
+</div></header>
+
+<main>
+<section id="inicio"><div class="wrap hero">
+  <div><div class="eyebrow">NUEVA GENERACIÓN DE TELEVISIÓN</div><h1>DANIVIA<br><span>TV</span></h1><p id="heroText">Tu espacio digital para deportes, programas, noticias y contenido en directo.</p><div class="buttons"><a class="btn primary" href="#programas">Ver programas</a><a class="btn" href="#deportes">Explorar deportes</a></div></div>
+  <div class="hero-card"><div class="live">PLATAFORMA ACTIVA</div><h2>Contenido para todos</h2><p>Una página rápida, adaptable a móviles y conectada con Firebase para guardar contenidos y gestionar el panel de administración.</p><div class="tag">FIREBASE READY</div></div>
+</div></section>
+
+<section id="deportes"><div class="wrap"><h2 class="section-title">Deportes</h2><p class="section-desc">Categorías destacadas de DANIVIA TV.</p><div class="grid" id="sportsGrid"></div></div></section>
+<section id="programas"><div class="wrap"><h2 class="section-title">Programas</h2><p class="section-desc">Contenido publicado desde Firebase.</p><div class="toolbar"><input id="searchInput" placeholder="Buscar programa..."><select id="categoryFilter"><option value="">Todas las categorías</option></select></div><div class="grid" id="programGrid"></div></div></section>
+<section id="noticias"><div class="wrap"><h2 class="section-title">Noticias</h2><p class="section-desc">Últimas publicaciones guardadas en la base de datos.</p><div class="grid" id="newsGrid"></div></div></section>
+<section id="admin"><div class="wrap"><h2 class="section-title">Panel de administración</h2><p class="section-desc">Inicia sesión con un usuario creado en Firebase Authentication.</p><div class="card"><div id="authState">No has iniciado sesión.</div><div class="buttons"><button class="btn primary" id="loginBtn">Iniciar sesión</button><button class="btn" id="logoutBtn" hidden>Cerrar sesión</button></div><div class="admin-only" id="adminTools"><hr style="border-color:var(--line);margin:25px 0"><h3>Publicar contenido</h3><form id="contentForm" class="toolbar"><input id="contentTitle" required placeholder="Título"><input id="contentDescription" required placeholder="Descripción"><select id="contentType"><option value="programa">Programa</option><option value="noticia">Noticia</option></select><button class="btn primary">Guardar</button></form></div></div></div></section>
+</main>
+
+<footer class="wrap"><span>© <span id="year"></span> DANIVIA TV</span><span id="firebaseState">Conectando con Firebase...</span></footer>
+<div class="status" id="status" role="status">Iniciando página...</div>
+
+<div class="modal" id="loginModal" aria-hidden="true"><div class="modal-box"><h2>Acceso de administrador</h2><form id="loginForm"><input id="email" type="email" required placeholder="Correo electrónico" autocomplete="username"><input id="password" type="password" required placeholder="Contraseña" autocomplete="current-password"><div class="modal-actions"><button class="btn primary">Entrar</button><button class="btn" type="button" id="closeModal">Cancelar</button></div></form></div></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+"use strict";
+const FIREBASE_CONFIG = {
+  apiKey:"AIzaSyDWrBx6giMtgUQVe_VvOmVXUh4GGxva4fo",
+  authDomain:"newedenprueba.firebaseapp.com",
+  projectId:"newedenprueba",
+  storageBucket:"newedenprueba.firebasestorage.app",
+  messagingSenderId:"622535732670",
+  appId:"1:622535732670:web:1a36bdcac880414b14ddef"
+};
+const fallback = {
+  deportes:[
+    {title:"Fútbol",description:"Actualidad, partidos y análisis."},
+    {title:"Baloncesto",description:"Resultados y noticias de baloncesto."},
+    {title:"Motor",description:"Velocidad, competición y novedades."},
+    {title:"eSports",description:"El mundo de los deportes electrónicos."}
+  ],
+  programas:[
+    {title:"DANIVIA NEWS",description:"Noticias y actualidad de la plataforma.",category:"Actualidad"},
+    {title:"ZONA DEPORTIVA",description:"Repaso a la actualidad deportiva.",category:"Deportes"},
+    {title:"DANIVIA LIVE",description:"Directos y contenidos especiales.",category:"Directo"}
+  ],
+  noticias:[
+    {title:"Bienvenido a DANIVIA TV",description:"La plataforma está lista para publicar contenido.",category:"General"}
+  ]
+};
+let db=null, auth=null, currentUser=null, remote=false;
+const $=id=>document.getElementById(id);
+function status(message,type=""){const el=$("status");el.textContent=message;el.className="status "+type;}
+function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderCards(target,items,empty="No hay contenido todavía."){const el=$(target);el.innerHTML=items.length?items.map(x=>`<article class="card"><span class="tag">${escapeHtml(x.category||"DANIVIA TV")}</span><h3>${escapeHtml(x.title)}</h3><p>${escapeHtml(x.description)}</p></article>`).join(""):`<div class="empty">${empty}</div>`;}
+function renderSports(){renderCards("sportsGrid",fallback.deportes,"No hay deportes configurados.");}
+function renderPrograms(items=fallback.programas){renderCards("programGrid",items,"No hay programas publicados.");}
+function renderNews(items=fallback.noticias){renderCards("newsGrid",items,"No hay noticias publicadas.");}
+function updateFilter(items){const select=$("categoryFilter");const categories=[...new Set(items.map(x=>x.category).filter(Boolean))];select.innerHTML='<option value="">Todas las categorías</option>'+categories.map(c=>`<option>${escapeHtml(c)}</option>`).join("");}
+async function loadRemote(){
+  if(!db){renderPrograms();renderNews();return;}
+  try{
+    const [programSnap,newsSnap]=await Promise.all([db.collection("programas").orderBy("createdAt","desc").limit(50).get(),db.collection("noticias").orderBy("createdAt","desc").limit(50).get()]);
+    const programs=programSnap.docs.map(d=>({id:d.id,...d.data()}));
+    const news=newsSnap.docs.map(d=>({id:d.id,...d.data()}));
+    if(programs.length)renderPrograms(programs);
+    if(news.length)renderNews(news);
+    updateFilter(programs);
+    window.allPrograms=programs.length?programs:fallback.programas;
+  }catch(error){
+    console.warn("No se pudo leer Firebase:",error);
+    renderPrograms();renderNews();
+    status("Firebase conectado, pero revisa las reglas de Firestore.","error");
+  }
+}
+function applyFilters(){const q=$("searchInput").value.toLowerCase().trim();const cat=$("categoryFilter").value;const items=(window.allPrograms||fallback.programas).filter(x=>(x.title+" "+x.description).toLowerCase().includes(q)&&(!cat||x.category===cat));renderPrograms(items);}
+async function saveContent(event){
+  event.preventDefault();
+  if(!currentUser||!db){status("Debes iniciar sesión y tener Firestore disponible.","error");return;}
+  const title=$("contentTitle").value.trim(),description=$("contentDescription").value.trim(),type=$("contentType").value;
+  try{
+    await db.collection(type==="programa"?"programas":"noticias").add({title,description,category:type==="programa"?"General":"General",createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdBy:currentUser.uid});
+    event.target.reset();status("Contenido guardado correctamente.","ok");await loadRemote();
+  }catch(error){console.error(error);status("No se pudo guardar. Revisa las reglas de Firestore.","error");}
+}
+function showAdmin(user){
+  currentUser=user||null;
+  $("authState").textContent=user?"Sesión iniciada: "+user.email:"No has iniciado sesión.";
+  $("loginBtn").hidden=!!user;$("logoutBtn").hidden=!user;$("adminTools").classList.toggle("visible",!!user);
+}
+function initFirebase(){
+  try{
+    if(!window.firebase)throw new Error("SDK de Firebase no cargado");
+    firebase.initializeApp(FIREBASE_CONFIG);db=firebase.firestore();auth=firebase.auth();remote=true;
+    $("firebaseState").textContent="Firebase conectado";$("firebaseState").style.color="var(--green)";
+    auth.onAuthStateChanged(showAdmin);loadRemote();
+  }catch(error){console.error(error);$("firebaseState").textContent="Modo local: Firebase no disponible";status("Página funcionando en modo local.","error");renderPrograms();renderNews();}
+}
+$("year").textContent=new Date().getFullYear();
+renderSports();renderPrograms();renderNews();
+$("searchInput").addEventListener("input",applyFilters);$("categoryFilter").addEventListener("change",applyFilters);
+$("loginBtn").addEventListener("click",()=>{$("loginModal").classList.add("open");$("loginModal").setAttribute("aria-hidden","false");});
+$("closeModal").addEventListener("click",()=>{$("loginModal").classList.remove("open");$("loginModal").setAttribute("aria-hidden","true");});
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();try{await auth.signInWithEmailAndPassword($("email").value,$("password").value);$("loginModal").classList.remove("open");status("Sesión iniciada.","ok");}catch(error){console.error(error);status("Login incorrecto: revisa correo, contraseña y Firebase Authentication.","error");}});
+$("logoutBtn").addEventListener("click",()=>auth.signOut());
+$("contentForm").addEventListener("submit",saveContent);
+initFirebase();
+</script>
+</body>
+</html>
